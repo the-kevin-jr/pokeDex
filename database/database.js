@@ -9,3 +9,4 @@ exports.connect = async function() {
         console.log("Connected To the database!");
     });
 }
+

@@ -1,6 +1,5 @@
 const http = require("http");
-const scraper = require("./scripts/request")
-const database = require("./database/database")
+const db = require("./database")
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
@@ -9,7 +8,6 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(8000, ()=>{
-    database.connect();
+    db.database.connect();
     console.log("Server Running!")
-    scraper.scrape();
 })

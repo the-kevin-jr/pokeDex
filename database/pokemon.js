@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 
 var pokemonSchema = new schema({
     id: { type: Number },
+    img: { type: String },
     name: { type: String },
     type: [{ type: String }],
     total: { type: Number }, 
@@ -17,18 +18,19 @@ var pokemonSchema = new schema({
 const Pokemon = mongoose.model("Pokemon", pokemonSchema);
 exports.Pokemon = Pokemon;
 
-exports.addPokemon = async function(id, name, type, total, hp, attack, def, specialAttack, specialDef, speed) {
+exports.addPokemon = async function(pokemon) {
     const newPokemon = new Pokemon({
-        id: id,
-        name: name,
-        type: type,
-        total: total, 
-        hp: hp, 
-        attack: attack,
-        def: def, 
-        specialAttack: specialAttack,
-        specialDef: specialDef, 
-        speed: speed,
+        id: pokemon.id,
+        img: pokemon.img,
+        name: pokemon.name,
+        type: pokemon.type,
+        total: pokemon.total, 
+        hp: pokemon.hp, 
+        attack: pokemon.attack,
+        def: pokemon.def, 
+        specialAttack: pokemon.specialAttack,
+        specialDef: pokemon.specialDef, 
+        speed: pokemon.speed,
     })
 
     await newPokemon.save();
